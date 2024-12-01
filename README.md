@@ -376,6 +376,26 @@ pip install PyQt6 plyer
                 timeout=15
             )
   ```
+  ### Горячие клавиши
+  - ```ALT + A``` - добавление задачи
+  - ```ALT + D``` - удаление задачи
+  - ```ALT + S``` - поиск задач
+  - ```ALT + SHIFT + D``` - удаление выполненных задач
+ ```python
+    def keyPressEvent(self, event):
+        if event.modifiers() == Qt.KeyboardModifier.AltModifier:
+            if event.key() == Qt.Key.Key_A:
+                self.combo = True
+                self.open_dialog_window()
+            if event.key() == Qt.Key.Key_D:
+                self.delete_mark()
+            if event.key() == Qt.Key.Key_S:
+                self.open_search_dialog()
+        elif event.modifiers() == (Qt.KeyboardModifier.AltModifier | Qt.KeyboardModifier.ShiftModifier):
+            if event.key() == Qt.Key.Key_D:
+                self.delete_completed_tasks()
+
+```
 ---
 
 ## Структура проекта
